@@ -17,7 +17,6 @@ const generatedRandomBetween = (min, max, exclude) => {
 
 // GAMESCREEN
 const GameScreen = (props) => {
-
     const [currentGuess, setCurrentGuess] = useState(
         generatedRandomBetween(1, 100, props.userChoice)
     );
@@ -25,20 +24,27 @@ const GameScreen = (props) => {
     const currentLow = useRef(1);
     const currentHigh = useRef(100);
 
+    // desestruturar para não não chamar o useEffect quando a classe pai for renderizada
+    // caso contrario o useEffect vai ser invocado,
+    // e só queremos execulta-lo quando currentGuess, userChoice forem mudados!
     const { userChoice, onGameOver } = props;
 
     useEffect(() => {
+        console.log(currentGuess + " " + userChoice);
         if (currentGuess === userChoice) {
             onGameOver(rounds);
         }
     }, [currentGuess, userChoice, onGameOver]);
 
     const nextGuessHandler = direction => {
-        if ((direction === 'lower' && currentGuess < props.userChoice) || (direction === 'greater' && currentGuess > props.userChoice)) {
+        if (
+            (direction === 'lower' && currentGuess < props.userChoice) || 
+            (direction === 'greater' && currentGuess > props.userChoice)
+        ) {
             Alert.alert('Don\'t lie!', 'You Know that this is wrong...', [
                 {text: 'Sorry!', style: 'cancel'}
             ]);
-            return
+            return;
         }
         if (direction == 'lower') {
             currentHigh.current = currentGuess;

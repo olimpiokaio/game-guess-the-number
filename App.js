@@ -12,11 +12,11 @@ export default function App() {
 
   const startGameHandler = (selectedNumber) => {
     setUserNumber(selectedNumber);
+    setGuessRounds(0);
   }
 
   const gameOverHandler = numOfRounds => {
     setGuessRounds(numOfRounds);
-    setGuessRounds(0);
   }
 
   let content = <StartGameScreen onStartGame={startGameHandler} />;
