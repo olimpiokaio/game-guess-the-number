@@ -12,6 +12,8 @@ import {
 import Card from '../components/Card';
 import Input from '../components/Input';
 import NumberContainer from '../components/NumberContainer';
+import BodyText from '../components/BodyText';
+import TitleText from '../components/TitleText';
 import Colors from '../constants/colors';
 
 const StartGameScreen = (props) => {
@@ -60,10 +62,10 @@ const StartGameScreen = (props) => {
     return (
         <TouchableWithoutFeedback onPress={() => {Keyboard.dismiss()}}>
             <View style={styles.screen}>
-                <Text style={styles.title}>Start a New Game!</Text>
+                <TitleText style={styles.title}>Start a New Game!</TitleText>
                 <Card style={styles.inputContainer}>
-                    <Text>Select a Number</Text>
-                    <Input 
+                    <BodyText>Select a Number</BodyText>
+                    <Input
                         style={styles.input}
                         blurOnSubmit
                         autoCapitalize="none"
@@ -74,9 +76,9 @@ const StartGameScreen = (props) => {
                         value={enteredValue} />
                     <View style={styles.buttonContainer}>
                         <View style={styles.button}>
-                            <Button 
-                                title="Reset" 
-                                color={Colors.eccent} 
+                            <Button
+                                title="Reset"
+                                color={Colors.eccent}
                                 onPress={resetInputHandler} />
                         </View>
                         <View style={styles.button}>
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     title: {
-        fontSize: 20
+        marginVertical: 10
     },
     inputContainer: {
         width: 300,
