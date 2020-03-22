@@ -8,6 +8,8 @@ import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
 import GameOverScreen from './screens/GameOverScreen';
 
+// Carrega as dependencias necessarias para a inicialização do app
+// nesse caso ele carrega as fontes local do app
 const fetchFonts = () => {
   return Font.loadAsync({
     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
@@ -22,6 +24,7 @@ export default function App() {
 
   if (!dataLoaded) {
     return(
+      // carrega dependencias para então mostrar a tela App
       <AppLoading
         startAsync={fetchFonts} 
         onFinish={() => setDataLoaded(true)}
